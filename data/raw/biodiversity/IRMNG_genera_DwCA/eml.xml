@@ -1,0 +1,126 @@
+<eml:eml xmlns:eml="eml://ecoinformatics.org/eml-2.1.1"
+    xmlns:md="eml://ecoinformatics.org/methods-2.1.1"
+    xmlns:proj="eml://ecoinformatics.org/project-2.1.1"
+    xmlns:d="eml://ecoinformatics.org/dataset-2.1.1"
+    xmlns:res="eml://ecoinformatics.org/resource-2.1.1"
+    xmlns:dc="http://purl.org/dc/terms/"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="eml://ecoinformatics.org/eml-2.1.1 http://rs.gbif.org/schema/eml-gbif-profile/1.0.1/eml.xsd"
+    packageId="IRMNG_export_2025-07-11" system="http://gbif.org" scope="system" xml:lang="eng">
+    <dataset>
+	  <title xml:lang="eng">The Interim Register of Marine and Nonmarine Genera</title>
+	  <creator>
+    	<organizationName>Rees, T. (compiler)</organizationName>
+    	<electronicMailAddress>info@irmng.org</electronicMailAddress>
+   	    <address>
+   	     <city></city>
+   	     <country></country>
+   	    </address>
+   	    <onlineUrl>https://www.irmng.org</onlineUrl>
+      </creator>
+      <metadataProvider>
+		<organizationName>WoRMS Data Management Team (DMT)</organizationName>
+    	<electronicMailAddress>info@irmng.org</electronicMailAddress>
+   	    <address>
+   	     <city>Ostend</city>
+   	     <postalCode>8400</postalCode>
+   	     <country>BE</country>
+   	    </address>
+   	    <onlineUrl>https://www.irmng.org</onlineUrl>
+      </metadataProvider>
+      <associatedParty>
+    <individualName>
+      <givenName>Leen</givenName>
+      <surName>Vandepitte</surName>
+    </individualName>
+    <organizationName>Vlaams Instituut voor de Zee</organizationName>
+    <address>
+      <country>Belgium</country>
+    </address>
+    <electronicMailAddress>leen.vandepitte@vliz.be</electronicMailAddress>
+    <role>custodianSteward</role>
+      </associatedParty>
+<associatedParty>
+    <individualName>
+      <givenName>Tony</givenName>
+      <surName>Rees</surName>
+    </individualName>
+    <organizationName></organizationName>
+    <address>
+      <country></country>
+    </address>
+    <electronicMailAddress></electronicMailAddress>
+    <role>owner</role>
+      </associatedParty>
+
+	  <pubDate>
+      	2025-07-11
+      </pubDate>
+      <language>eng</language>
+      <abstract>
+        <para>The Interim Register of Marine and Nonmarine Genera is a provisional (or ‘interim’) compilation of genus names – including species names in many cases – and covers both living and extinct biota into a single system to support taxonomic and other queries dealing with e.g. homonyms, authorities, parent-child relationships, spelling variations and distinctions between marine and non-marine or fossil and recent taxa</para>
+      </abstract>
+      <keywordSet>
+	   <keyword>taxonomic</keyword>
+	   <keyword>database</keyword>
+	   <keyword>online</keyword>
+	   
+	   <keyword>species</keyword>
+	   <keywordThesaurus />
+  	  </keywordSet>
+  	  <keywordSet>
+  	   <keyword>checklist</keyword>
+  	   <keywordThesaurus>GBIF Dataset Type Vocabulary: http://rs.gbif.org/vocabulary/gbif/dataset_type.xml</keywordThesaurus>
+  	  </keywordSet>
+  	  <keywordSet>
+  	   <keyword>taxonomicAuthority</keyword>
+  	   <keyword>globalSpeciesDataset</keyword>
+	   <keyword>inventoryThematic</keyword>
+  	   <keywordThesaurus>GBIF Dataset Subtype Vocabulary: http://rs.gbif.org/vocabulary/gbif/dataset_subtype.xml</keywordThesaurus>
+  	  </keywordSet>
+      <intellectualRights>
+        <para>This work is licensed under a <ulink url="http://creativecommons.org/licenses/by/4.0/legalcode"><citetitle>Creative Commons Attribution (CC-BY) 4.0 License</citetitle></ulink>.</para>
+      </intellectualRights>
+      <distribution scope="document">
+        <online>
+          <url function="information">https://www.irmng.org/</url>
+        </online>
+      </distribution>
+      <coverage>
+        <taxonomicCoverage>
+         <generalTaxonomicCoverage>Biota</generalTaxonomicCoverage>
+         <taxonomicClassification>
+          <taxonRankName>superdomain</taxonRankName>
+          <taxonRankValue>Biota</taxonRankValue>
+         </taxonomicClassification>
+        </taxonomicCoverage>
+		<geographicCoverage>
+          <geographicDescription>World</geographicDescription>
+          <boundingCoordinates>
+            <westBoundingCoordinate>-180</westBoundingCoordinate>
+            <eastBoundingCoordinate>180</eastBoundingCoordinate>
+            <northBoundingCoordinate>90</northBoundingCoordinate>
+            <southBoundingCoordinate>-90</southBoundingCoordinate>
+          </boundingCoordinates>
+        </geographicCoverage>
+        <temporalCoverage>
+        	<beginDate><calendarDate>1758</calendarDate></beginDate>
+        	<endDate><calendarDate>2025-07-11</calendarDate></endDate>
+        </temporalCoverage>
+      </coverage>
+      <contact>
+    	<organizationName>The Interim Register of Marine and Nonmarine Genera</organizationName>
+    	<electronicMailAddress>info@irmng.org</electronicMailAddress>
+      </contact>
+    </dataset>
+    <additionalMetadata>
+     <metadata>
+      <gbif>
+        <dateStamp>2025-07-11T10:47:31+02:00</dateStamp>
+        <hierarchyLevel>dataset</hierarchyLevel>
+        <citation>&lt;b&gt;Rees, T. (compiler)&lt;/b&gt; (2025). The Interim Register of Marine and Nonmarine Genera. Available from https://www.irmng.org at VLIZ. Accessed 2025-07-11</citation>
+		<resourceLogoUrl>https://www.irmng.org/images/irmng-small.gif</resourceLogoUrl>
+      </gbif>
+     </metadata>
+    </additionalMetadata>
+</eml:eml>
