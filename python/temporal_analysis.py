@@ -19,7 +19,6 @@ from config import (
 STUDY_BBOX_WGS84 = dict(lon_min=-25, lon_max=32, lat_min=55, lat_max=68)
 
 def regional_mean_traffic(raster_file, bbox_wgs84):
-    """Mean of valid pixels inside the study bbox for one year's raster."""
     with rasterio.open(raster_file) as src:
         transformer = Transformer.from_crs("EPSG:4326", RASTER_CRS, always_xy=True)
         x_min, y_min = transformer.transform(bbox_wgs84["lon_min"], bbox_wgs84["lat_min"])
@@ -42,7 +41,7 @@ def main():
 
     for year in RASTER_YEARS:
         raster_file = raster_path(year)
-
+        
         # regional mean traffic for this year
         regional_rows.append({
             "year": year,
