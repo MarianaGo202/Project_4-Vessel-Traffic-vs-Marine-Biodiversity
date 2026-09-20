@@ -23,7 +23,6 @@ def filter_by_latitude(input_path, output_path, lat_limit):
           f"({n_before - n_after} dropped, above {lat_limit}N)")
     print(df_filtered["especie_normalizada"].value_counts())
     print()
-
     return df_filtered
 
 def main():
