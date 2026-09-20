@@ -15,7 +15,6 @@ MPA_DIR = DATA_DIR / "raw" / "mpa"
 # Folder extracted from the WDPA download (covers all of Europe).
 WDPA_SHP_DIR = MPA_DIR / "WDPA_WDOECM_Sep2026_Public_EU_shp"
 
-# Cached, already-filtered result (created on first run).
 MPA_PATH = MPA_DIR / "WDPA_scandinavia.geojson"
 
 TARGET_ISO3 = ["NOR", "DNK", "ISL"]
@@ -32,13 +31,11 @@ def filter_by_country(gdf: gpd.GeoDataFrame, iso3_codes: list[str]) -> gpd.GeoDa
     if "ISO3" not in gdf.columns:
         print("WARNING: no ISO3 column found, skipping country filter.")
         return gdf
-
     target = set(iso3_codes)
 
     def matches(value) -> bool:
         codes = {code.strip() for code in str(value).split(";")}
         return bool(codes & target)
-
     mask = gdf["ISO3"].apply(matches)
     return gdf[mask]
 
@@ -96,7 +93,7 @@ def load_mpas() -> gpd.GeoDataFrame | None:
     mpas = mpas.to_crs(RASTER_CRS)
 
     # Fixing invalid geometries here avoids downstream errors/hangs in the
-    # spatial join below (common with large, complex coastline polygons).
+    # spatial join below
     mpas["geometry"] = mpas["geometry"].buffer(0)
 
     print(f"MPA features loaded: {len(mpas)}")
@@ -117,7 +114,7 @@ def load_occurrences() -> gpd.GeoDataFrame | None:
     print(f"\nReading occurrences:\n{occ_path}")
     df = pd.read_csv(occ_path)
     print(f"Occurrences loaded: {len(df)}")
-
+    
     return gpd.GeoDataFrame(
         df,
         geometry=gpd.points_from_xy(
@@ -140,16 +137,12 @@ def check_inside_mpas(
         how="left",
         predicate="within",
     )
-
-    # A point could technically fall inside more than one overlapping MPA,
-    # which would duplicate rows in the join. Collapse back to one row per
-    # occurrence, keeping the "inside" flag if it matched at least one MPA.
+    
     inside_flag = joined.groupby(joined.index)["index_right"].apply(
         lambda s: s.notna().any()
     )
 
     occurrences["inside_mpa"] = inside_flag.reindex(occurrences.index, fill_value=False)
-
     return occurrences
 
 def print_summary(gdf: gpd.GeoDataFrame) -> None:
