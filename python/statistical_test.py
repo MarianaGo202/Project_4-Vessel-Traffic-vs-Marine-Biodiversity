@@ -31,14 +31,13 @@ def build_grid(bounds, cell_size):
 
 def mean_traffic_per_cell(grid, raster_file):
     means = []
-
     with rasterio.open(raster_file) as src:
         nodata = src.nodata
 
         for geom in grid.geometry:
             window = src.window(*geom.bounds)
             window = window.round_offsets().round_lengths()
-
+            
             data = src.read(1, window=window)
 
             if nodata is not None:
@@ -55,7 +54,6 @@ def mean_traffic_per_cell(grid, raster_file):
 
     grid = grid.copy()
     grid["mean_traffic"] = means
-
     return grid
 
 def occurrences_per_cell(grid, points_gdf):
@@ -78,7 +76,6 @@ def occurrences_per_cell(grid, points_gdf):
         .fillna(0)
         .astype(int)
     )
-
     return grid
 
 
@@ -95,7 +92,6 @@ def main():
         return
 
     points = pd.read_csv(INPUT_FILE)
-
     print(f"Occurrences loaded: {len(points)}")
 
     points_gdf = gpd.GeoDataFrame(
@@ -106,23 +102,19 @@ def main():
         ),
         crs="EPSG:4326"
     ).to_crs(RASTER_CRS)
-
     print("Building grid...")
 
     grid = build_grid(
         points_gdf.total_bounds,
         GRID_CELL_SIZE_M
     )
-
     print(f"Grid cells created: {len(grid)}")
-
     print("Calculating mean vessel traffic...")
 
     grid = mean_traffic_per_cell(
         grid,
         raster_path(YEAR)
     )
-
     print("Counting species occurrences...")
 
     grid = occurrences_per_cell(
@@ -157,7 +149,6 @@ def main():
 
     if p_value < 0.05:
         direction = "positive" if rho > 0 else "negative"
-
         print(
             f"Statistically significant {direction} relationship "
             f"(alpha = 0.05)."
@@ -187,7 +178,7 @@ def main():
         csv_output,
         index=False
     )
-
+    
     print()
     print(f"Saved data: {csv_output}")
 
@@ -202,7 +193,7 @@ def main():
     )
 
     if len(grid_valid) > 1:
-
+        
         slope, intercept, r_value, p_regression, std_err = (
             stats.linregress(
                 grid_valid["mean_traffic"],
@@ -267,7 +258,6 @@ def main():
     print(
         f"Saved plot: {plot_output}"
     )
-
 
 if __name__ == "__main__":
     main()
