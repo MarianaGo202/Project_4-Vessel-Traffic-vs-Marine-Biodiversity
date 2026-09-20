@@ -31,7 +31,7 @@ occurrences <- occurrence(
 print(table(occurrences$scientificName))
 print(range(occurrences$date_year, na.rm = TRUE))
 
-# Save full raw dataset (CSV + GeoJSON)
+# (CSV + GeoJSON)
 write.csv(
   occurrences,
   "obis_especies_escandinavia.csv",
@@ -64,11 +64,9 @@ occurrences <- occurrences %>%
 
 print(table(occurrences$especie_normalizada, occurrences$decade))
 
-# Re-save the full dataset now that it includes the normalized species
-# and decade columns.
 write.csv(occurrences, "obis_especies_escandinavia.csv", row.names = FALSE)
 
-# 2023 subset (for the spatial overlay analysis)
+# 2023 subset
 obis_2023 <- occurrences %>%
   filter(date_year == 2023)
 
@@ -82,7 +80,7 @@ st_write(
 
 print(table(obis_2023$especie_normalizada))
 
-# 2017-2024 subset (for the temporal analysis)
+# 2017-2024 subset
 obis_temporal <- occurrences %>%
   filter(date_year >= 2017 & date_year <= 2024)
 
